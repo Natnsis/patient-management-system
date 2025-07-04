@@ -13,7 +13,7 @@ export enum FormfieldTypes {
   PHONE_INPUT = "phoneInput",
   CHECKbOX = "checkbox",
   SELECT = "select",
-  SKELETON = "skeleton"
+  SKELETON = "skeleton",
 }
 
 const formSchema = z.object({
@@ -23,7 +23,6 @@ const formSchema = z.object({
 });
 
 export default function PatientForm() {
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -31,7 +30,6 @@ export default function PatientForm() {
     },
   });
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
   }
@@ -41,16 +39,34 @@ export default function PatientForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
         <section className="mb-12 space-y-4 ">
           <h1 className="text-xl font-bold">Hi there ;)</h1>
-          <p className="text-sm">Schedult your first appointment</p>
+          <p className="text-sm">Schedule your first appointment</p>
         </section>
         <CustomFromField
           control={form.control}
           fieldType={FormfieldTypes.INPUT}
-          name="name"
-          label="label"
+          name="username"
+          label="Username"
           placeholder="john doe"
-          iconSrc=""
+          iconSrc="/file.svg"
           iconAlt="user"
+        />
+        <CustomFromField
+          control={form.control}
+          fieldType={FormfieldTypes.INPUT}
+          name="email"
+          label="Email"
+          placeholder="example@gmail.com"
+          iconSrc="/window.svg"
+          iconAlt="mail"
+        />
+        <CustomFromField
+          control={form.control}
+          fieldType={FormfieldTypes.INPUT}
+          name="phone"
+          label="Phone"
+          placeholder="+(123)45678"
+          iconSrc="/globe.svg"
+          iconAlt="phone"
         />
         <Button type="submit">Submit</Button>
       </form>

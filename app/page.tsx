@@ -7,7 +7,7 @@ export default function Home() {
     <div className="flex h-screen max-h-screen">
       {/* TODO: otp verification || password modal */}
       <section className="remove-scrollbar container my-auto  p-10">
-        <div className="sub-container max-w-[496px">
+        <div className="sub-container max-w-[496px]">
           <Image
             src="/brand creation-bro.svg"
             alt="logo"
